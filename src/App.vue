@@ -14,14 +14,13 @@
 import AddCounterForm from "./components/AddCounterForm.vue";
 import EmCounter from "./components/EmCounter.vue";
 import EmHeader from "./components/EmHeader.vue";
-
-import { useStore } from "vuex";
 import { computed } from "vue";
+import { useCounterStore } from "./store";
 
-const store = useStore();
-store.dispatch("init");
+const store = useCounterStore();
+store.init();
 
 let counters = computed(function () {
-  return store.state.counters;
+  return store.counters;
 });
 </script>

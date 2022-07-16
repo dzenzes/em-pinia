@@ -13,23 +13,23 @@
 <script setup>
 import EmButton from "./EmButton.vue";
 import { computed } from "vue";
-import { useStore } from "vuex";
+import { useCounterStore } from "../store";
 
 const props = defineProps({
   id: { type: String, required: true },
 });
 
-const store = useStore();
+const store = useCounterStore();
 
-const counter = computed(() => store.getters.getById(props.id));
+const counter = computed(() => store.getById(props.id));
 
 function increment() {
-  store.dispatch("incrementCounter", { id: props.id });
+  store.incrementCounter(props.id);
 }
 function decrement() {
-  store.dispatch("decrementCounter", { id: props.id });
+  store.decrementCounter(props.id);
 }
 function deleteCounter() {
-  store.dispatch("deleteCounter", { id: props.id });
+  store.deleteCounter(props.id);
 }
 </script>
