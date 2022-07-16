@@ -23,15 +23,15 @@
 </template>
 
 <script setup>
-import { useStore } from "vuex";
+import { useCounterStore } from "../store";
 import { ref } from "vue";
 
 let name = ref("");
 
-const store = useStore();
+const store = useCounterStore();
 
 function addCounter() {
-  store.dispatch("addCounter", { name: name.value });
+  store.addCounter(name.value);
   name.value = "";
 }
 </script>
